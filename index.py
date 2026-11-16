@@ -71,7 +71,7 @@ def home():
 
 
 #updating books
-@app.route("/BookUpdate",methods=["get"])
+@app.route("/BookUpdate",methods=["post"])
 def BookUpdate():
     BookName = request.form["BookName"]
     WriterName = request.form["WriterName"]
