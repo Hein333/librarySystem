@@ -91,7 +91,7 @@ def BookUpdated():
                         cursor.execute(sql, (BookName,WriterName,BookCode))
                         cursor.execute("COMMIT")
         
-                        rows = cursor.fetchall()
+                        
                         return "book added into the database"
                            
         
