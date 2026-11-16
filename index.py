@@ -83,7 +83,7 @@ def BookUpdate():
         try:
             with oracledb.connect(user=DB_USER,password=DB_PASSWORD,dsn = DB_DSN) as connection:
                 with connection.cursor() as cursor:
-                        sql = "INSERT INTO users1(BookName,WriterName,BookCode) VALUES(:1,:2,:3)"
+                        sql = "INSERT INTO BOOKDATA(BookName,WriterName,BookCode) VALUES(:1,:2,:3)"
                         cursor.execute(sql, (BookName,WriterName,BookCode))
                         cursor.execute("COMMIT")
         
