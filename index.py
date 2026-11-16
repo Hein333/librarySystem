@@ -75,8 +75,8 @@ def BookUpdate():
 
 
 #updating books
-@app.route("/BookUpdate",methods=["post"])
-def BookUpdate():
+@app.route("/BookUpdated",methods=["post"])
+def BookUpdated():
     BookName = request.form["BookName"]
     WriterName = request.form["WriterName"]
     BookCode = request.form["BookCode"]
