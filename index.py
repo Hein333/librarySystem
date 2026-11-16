@@ -15,7 +15,7 @@ def connectDatabase():
     try:
         with oracledb.connect(user=DB_USER,password=DB_PASSWORD,dsn = DB_DSN) as connection:
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM bookdata")
+                cursor.execute("SELECT * FROM bookdata1")
                 #get data from the database as list like this[(),(),()]
                 rows = cursor.fetchall()
                 print(rows)
@@ -87,7 +87,7 @@ def BookUpdated():
         try:
             with oracledb.connect(user=DB_USER,password=DB_PASSWORD,dsn = DB_DSN) as connection:
                 with connection.cursor() as cursor:
-                        sql = "INSERT INTO BOOKDATA(BookName,WriterName,BookCode) VALUES(:1,:2,:3)"
+                        sql = "INSERT INTO BOOKDATA1(BookName,WriterName,BookCode) VALUES(:1,:2,:3)"
                         cursor.execute(sql, (BookName,WriterName,BookCode))
                         cursor.execute("COMMIT")
         
