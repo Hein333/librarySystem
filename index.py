@@ -100,3 +100,32 @@ def BookUpdated():
             return "ERROR in the BookUpdate Function"
     else:
         return "The book is already in the database"
+
+
+
+@app.route("/SearchBook",methods=["post"])
+def BookSearch():
+    return render_template("SearchBook.html")
+
+@app.route("/SearchedBook",methods=["post"])
+def BookSearched():
+    BookData = request.form["BookNameOrWriterNameOrBookCode"]
+    checkOk = checkTheDataInTheDatabase(BookData,BookData,BookData,datalist)
+    if checkOk:
+            #get the data from the database 
+            try:
+                with oracledb.connect(user=DB_USER,password=DB_PASSWORD,dsn = DB_DSN) as connection:
+                    with connection.cursor() as cursor:
+                            sql = "SELECT BOOKNAME,WRITERNAME,BOOKCODE FROM  BOOKDATA1 WHERE BOOKNAME = :1 OR WRITERNAME = :2 OR BOOKCODE = :3"
+                            cursor.execute(sql, (BookData,BookData,BookData))
+                            rows = cursor.fetchall()
+            
+                            
+                            return rows
+                               
+            
+            except Exception as e:
+                print(f"Database Error{e}",flush=True)
+                return "ERROR in the SearchBooked Function"
+    else:
+        return "The book is already in the database"
