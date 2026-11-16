@@ -69,6 +69,10 @@ def dataAnalysis(BookName,WriterName,BookCode,datalist):
 def home():
     return render_template("choose.html")
 
+@app.route("/BookUpdate",methods=["get"])
+def BookUpdate():
+    return render_template("BookUpdate.html")
+
 
 #updating books
 @app.route("/BookUpdate",methods=["post"])
